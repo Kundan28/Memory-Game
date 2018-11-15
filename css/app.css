@@ -1,0 +1,262 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #ffffff url('../img/geometry2.png');
+	/* Background pattern from Subtle Patterns */
+}
+
+.container {
+	background: linear-gradient(330deg, #04cbba 0%, #a97fcd 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Stylish', sans-serif;
+}
+
+h1 {
+	font-family: 'Stylish', sans-serif;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 10vw;
+}
+
+.deck {
+	width: 95%;
+	background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+	padding: 0.5rem;
+	border-radius: 10px;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 3em;
+}
+
+.deck .card {
+	height: 20vw;
+	width: 20vw;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	background: #2e3d49;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+	-webkit-animation: flip 0.5s;
+}
+
+.deck .card.open {
+	background: #02b3e4;
+	cursor: default;
+	animation: flip 0.5s;
+	-webkit-animation: flip 0.5s;
+}
+
+.deck .card.show {
+	font-size: 33px;
+}
+
+.deck .card.match {
+	cursor: default;
+	background: #02ccba;
+	font-size: 33px;
+	animation-timing-function: ease-in;
+	animation: bounce 0.5s;
+	-webkit-animation: bounce 0.5s;
+}
+
+.deck .card.unmatched {
+	cursor: default;
+	background: #ff3232;
+	animation-delay: 3s;
+	-webkit-keyframes: shake 0.5s ease-in-out;
+	animation: shake 0.5s ease-in-out;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+}
+
+.score-panel {
+	text-align: left;
+	margin-bottom: 10px;
+	font-size: 5vw;
+}
+
+.score-panel .stars {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 2px 0 0;
+}
+
+.score-panel .stars li {
+	list-style: none;
+	display: inline-block;
+	color: #ffd700;
+}
+
+.score-panel .restart {
+	float: right;
+	cursor: pointer;
+}
+
+.gameTimer {
+	display: inline-block;
+	margin: 0 1rem;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100% height: 100%;
+	transition: opacity 1000ms;
+	visibility: hidden;
+	font-family: 'Stylish', sans-serif;
+	font-size: 6vw;
+	border-radius: 10px;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	text-align: center;
+	background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+}
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+
+.modal h2 {
+	font-size: 10vw;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	margin-left: 15px;
+	margin-right: 15px;
+	justify-content: center;
+}
+
+.modal h3 {
+	font-size: 7vw;
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	justify-content: center;
+}
+
+.rating li {
+	display: inline-block;
+	color: #ffd700;
+	font-size: 7vw;
+}
+
+.replay {
+	background-color: #02ccba;
+	font-family: 'Stylish', sans-serif;
+	width: 20%;
+	margin-left: 30%;
+	margin-right: 30%;
+	font-size: 5vw;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+@-webkit-keyframes flip {
+    0% {-webkit-transform: rotateY(0deg);}
+    50% {background-position-y:0px;}
+    51% {background-position-y:204px;}
+    100% { -webkit-transform: rotateY(180deg);}
+}
+
+@-webkit-keyframes bounce {
+	from {
+		transform: translateY(0px);
+	}
+	to {
+		transform: translateY(-15px);
+	}
+}
+
+@-webkit-keyframes shake {
+	0% {
+		-webkit-transform: translateX(0);
+	}
+	20% {
+		-webkit-transform: translateX(-10px);
+	}
+	40% {
+		-webkit-transform: translateX(10px);
+	}
+	60% {
+		-webkit-transform: translateX(-10px);
+	}
+	80% {
+		-webkit-transform: translateX(10px);
+	}
+	100% {
+		-webkit-transform: translateX(0);
+	}
+}
+
+@media screen and (min-width: 601px) {
+	h1 {
+		font-size: 5vw;
+	}
+	.deck {
+		width: 660px;
+		min-height: 680px;
+		padding: 30px;
+	}
+	.deck .card {
+		height: 125px;
+		width: 125px;
+		margin: 0;
+	}
+	.score-panel {
+		font-size: 2rem;
+	}
+	.modal {
+		font-size: 2rem;
+	}
+	.modal h2 {
+		padding-top: 20vh;
+		font-size: 4vw;
+	}
+	.modal h3 {
+		font-size: 2rem;
+	}
+	.rating li {
+		font-size: 2rem;
+	}
+	.replay {
+		font-size: 2vw;
+		max-width: 30%;
+		margin-left: 30%;
+		margin-right: 30%;
+	}
+}
